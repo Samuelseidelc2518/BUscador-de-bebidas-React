@@ -22,13 +22,12 @@ const RecetasProvider = (props) => {
                     
                     const resultado = await axios.get(url)
 
-                    // console.log(resultado.data.drinks)
-
                     setRecetas(resultado.data.drinks)
             }
             obtenerRecetas()
         }
         setConsultar(false)    
+        // eslint-disable-next-line
     }, [busqueda])
     
 

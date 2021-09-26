@@ -6,6 +6,7 @@ export const ModalContext = createContext()
 const ModalProvider = (props) => {
 
     const [idReceta, setIdReceta] = useState(null)
+    const [informacion, setReceta] = useState({})
 
 
     useEffect(() => {
@@ -18,7 +19,8 @@ const ModalProvider = (props) => {
             const resultado = await axios.get(url)
             const datosDeLaBebida = resultado.data.drinks[0]
 
-            console.log(datosDeLaBebida)
+            setReceta(datosDeLaBebida)
+            // console.log(datosDeLaBebida)
         }
         obtenerReceta()
     }, [idReceta])
@@ -27,7 +29,9 @@ const ModalProvider = (props) => {
     return (
         <ModalContext.Provider
           value={{
-            setIdReceta
+            informacion,
+            setIdReceta,
+            setReceta
           }}
         >
             {props.children}
